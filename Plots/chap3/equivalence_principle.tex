@@ -1,0 +1,31 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes}
+\usepackage{amsmath,amssymb,amsfonts}
+
+\usepackage{pgfplots}
+\usepackage[makeroom]{cancel}
+\usetikzlibrary{decorations.markings}
+\definecolor{darkgreen}{rgb}{0.0, 0.42, 0.24}
+\definecolor{amethyst}{rgb}{0.6, 0.4, 0.8}
+
+\pgfplotsset{compat=newest}
+\pgfplotsset{every axis/.append style={
+                     tick label style={font=\footnotesize},
+                 }}
+
+\begin{document}
+\begin{tikzpicture}
+\draw[draw=black] (0,0) rectangle ++(4,4);
+\draw[draw=black] (5,0) rectangle ++(4,4);
+\draw[->] (7,4)--(7,5) node[midway,right,scale=0.6]{$\vec{a}$};
+
+\draw (2,2) circle[radius=0.2] node[scale=0.6]{$m$};
+\draw[->](2,1.8)--(2,1) node[midway,right,scale=0.6]{$-m\vec{g}$};
+\draw (7,2) circle[radius=0.2] node[scale=0.6]{$m$};
+\draw[->](7,1.8)--(7,1) node[midway,right,scale=0.6]{$-m\vec{a}$};
+
+\draw[-,dashed,color=gray](4.5,5)--(4.5,0);
+\end{tikzpicture}
+\end{document}

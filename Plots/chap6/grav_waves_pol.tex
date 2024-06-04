@@ -1,0 +1,60 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes}
+\usepackage{amsmath,amssymb,amsfonts}
+
+\usepackage{pgfplots}
+\definecolor{darkgreen}{rgb}{0.0, 0.42, 0.24}
+\definecolor{amethyst}{rgb}{0.6, 0.4, 0.8}
+
+\pgfplotsset{width=10cm,compat=1.9}
+\pgfplotsset{every axis/.append style={
+                     tick label style={font=\footnotesize},
+                 }}
+
+
+\begin{document}
+\begin{tikzpicture}
+       \begin{axis}[axis lines=center,
+       xmin=-11,
+       xmax=11,
+       ymin=-11,
+       ymax=11,
+       axis equal,
+       xlabel=$x$,
+       ylabel=$y$,
+       yticklabels=false,
+       xticklabels=false]
+           \draw[dashed] (axis cs: 0, 0) circle (3cm);
+           \draw[color=blue] (axis cs: 0,0) ellipse (3.5cm and 2.65cm);
+           \draw[color=red] (axis cs: 0,0) ellipse (2.65cm and 3.5cm);
+           \node[thick] at (axis cs:-1,1){$A_{+}$};
+           \draw[->, very thick,color=blue](axis cs:-4,0)--(axis cs:-11,0);
+           \draw[->, very thick,color=blue](axis cs:4,0)--(axis cs:11,0);
+           \draw[->, very thick,color=blue](axis cs:0,8.3)--(axis cs:0,3);
+           \draw[->, very thick,color=blue](axis cs:0,-8.3)--(axis cs:0,-3);
+       \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+       \begin{axis}[axis lines=center,
+       xmin=-11,
+       xmax=11,
+       ymin=-11,
+       ymax=11,
+       axis equal,
+       xlabel=$x$,
+       ylabel=$y$,
+       yticklabels=false,
+       xticklabels=false]
+           \draw[dashed] (axis cs: 0, 0) circle (3cm);
+           \draw[color=blue, rotate around={45:(axis cs:0,0)}] (axis cs: 0,0) ellipse (3.5cm and 2.65cm);
+           \draw[color=red, rotate around={45:(axis cs:0,0)}] (axis cs: 0,0) ellipse (2.65cm and 3.5cm);
+           \node[thick] at (axis cs:-1,1){$A_{\times}$};
+         \draw[->, very thick,color=blue](axis cs: -2.8,-2.8)--(axis cs: -7.77,-7.77);
+           \draw[->, very thick,color=blue](axis cs: 2.8,2.8)--(axis cs: 7.77,7.77);
+            \draw[->, very thick,color=blue](axis cs:-5.85,5.85)--(axis cs:-2,2);
+           \draw[->, very thick,color=blue](axis cs:5.85,-5.85)--(axis cs:2,-2);
+       \end{axis}
+    \end{tikzpicture}
+\end{document}

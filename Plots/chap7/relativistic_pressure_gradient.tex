@@ -1,0 +1,35 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes}
+\usepackage{amsmath,amssymb,amsfonts,xcolor}
+
+\usepackage{pgfplots}
+\definecolor{darkgreen}{rgb}{0.0, 0.42, 0.24}
+\definecolor{amethyst}{rgb}{0.6, 0.4, 0.8}
+
+\pgfplotsset{compat=newest}
+\pgfplotsset{every axis/.append style={
+                     tick label style={font=\footnotesize},
+                 }}
+
+\begin{document}
+\begin{tikzpicture}
+        \begin{axis}[xmin=0,xmax=2.2,ymin=-0.1,ymax=0.9,
+        axis lines = middle,
+        ytick={0},
+        yticklabels=false,
+        xtick={2},
+        xticklabels={$R$},
+        xlabel=$r$,
+        ylabel=$P(r)$,
+        label style={font=\small},
+        tick label style={font=\small},
+        xticklabel style={anchor=north},
+        domain=0:2]
+            \addplot[color=black,samples=100]{(sqrt(1-(1.33*x^2)/8)-sqrt(1-1.33/2))/(3*sqrt(1-1.33/2)-sqrt(1-(1.33*x^2)/8))} node[pos=0.1,above,scale=0.6]{$R=1.5r_s$};
+            \addplot[color=black,samples=100]{(sqrt(1-(x^2)/8)-sqrt(1-1/2))/(3*sqrt(1-1/2)-sqrt(1-(x^2)/8))}node[pos=0.1,above,scale=0.6]{$R=2r_s$};
+            \addplot[color=black,samples=100]{(sqrt(1-((2/3)*x^2)/8)-sqrt(1-(2/3)/2))/(3*sqrt(1-(2/3)/2)-sqrt(1-((2/3)*x^2)/8))}node[pos=0.1,above,scale=0.6]{$R=3r_s$};
+        \end{axis}
+    \end{tikzpicture}
+\end{document}

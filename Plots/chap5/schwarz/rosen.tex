@@ -1,0 +1,37 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes}
+\usepackage{amsmath,amssymb,amsfonts,xcolor}
+
+\usepackage{pgfplots}
+\definecolor{darkgreen}{rgb}{0.0, 0.42, 0.24}
+\definecolor{amethyst}{rgb}{0.6, 0.4, 0.8}
+
+\pgfplotsset{compat=newest}
+\pgfplotsset{every axis/.append style={
+                     tick label style={font=\footnotesize},
+                 }}
+
+\begin{document}
+    \begin{tikzpicture}
+    \begin{axis}[colormap/cool,
+    data cs=polar,
+    domain=0:360,y domain=1:5,
+    samples=50,
+    declare function={
+       flamm(\r,\a)={2*sqrt(\r-\a)};
+       pol2cartX(\angle,\radius) = \radius * cos(\angle);
+       pol2cartY(\angle,\radius) = \radius * sin(\angle);
+       }, 
+       zticklabels=false,
+       ytick={-4,-2,0,2,4},
+       yticklabels={$-4r_{s}$,$-2r_{s}$,$0$,$2r_{s}$,$4r_{s}$},
+       xtick={-4,-2,0,2,4},
+       xticklabels={$-4r_{s}$,$-2r_{s}$,$0$,$2r_{s}$,$4r_{s}$}
+       ]
+       \addplot3[surf,z buffer=sort,y domain=1:5]{-flamm(y,1)};
+       \addplot3[surf,z buffer=sort,y domain=1:5]{flamm(y,1)};
+    \end{axis}
+\end{tikzpicture} 
+\end{document}

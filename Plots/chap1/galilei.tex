@@ -1,0 +1,42 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes}
+\usepackage{amsmath,amssymb,amsfonts}
+
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=newest}
+\pgfplotsset{every axis/.append style={
+                     tick label style={font=\footnotesize},
+                 }}
+
+
+\begin{document}
+\begin{tikzpicture}
+ \begin{axis}[axis lines =center,xmin=-3,xmax=5,ymin=-0.1,ymax=5,xticklabels=false,yticklabels=false,xlabel=$x$,ylabel=$t$]
+     \addplot[color=red,domain=0:5]{x} node[below,midway,color=black,scale=0.8]{v};
+     \addplot[color=blue,domain=0:5,thick] coordinates {(0,0)(0,5)};
+     
+     \draw[->,color=red,thick](0,0)--(1.4,1.4) node[left,midway, color=black,scale=0.8]{$\widetilde{\vec{e_t}}$};
+     \draw[->,color=red,thick](0,0)--(2,0) node[above,midway, color=black,scale=0.8]{$\widetilde{\vec{e_x}}$};
+     
+     \draw[->,color=blue,thick](-2.5,0)--(-2.5,2) node[left,midway, color=black,scale=0.8]{$\vec{e_t}$};
+     \draw[->,color=blue,thick](-2.5,0)--(-0.5,0) node[above,midway, color=black,scale=0.8]{$\vec{e_x}$};
+ \end{axis}
+
+\end{tikzpicture}
+\begin{tikzpicture}
+ \begin{axis}[axis lines =center,xmin=-3,xmax=5,ymin=-0.1,ymax=5,xticklabels=false,yticklabels=false,xlabel=$x$,ylabel=$t$]
+     \addplot[color=blue,domain=-3:0]{-x} node[above,midway,color=black,scale=0.8]{-v};
+     \addplot[color=blue,domain=0:5,thick] coordinates {(0,0)(0,5)};
+     
+     \draw[->,color=red,thick](1,0)--(1,2) node[left,midway, color=black,scale=0.8]{$\widetilde{\vec{e_t}}$};
+     \draw[->,color=red,thick](1,0)--(3,0) node[above,midway, color=black,scale=0.8]{$\widetilde{\vec{e_x}}$};
+     
+     \draw[->,color=blue,thick](0,0)--(-1.4,1.4) node[left,midway, color=black,scale=0.8]{$\vec{e_t}$};
+     \draw[->,color=blue,thick](-2,0)--(-0,0) node[above,midway, color=black,scale=0.8]{$\vec{e_x}$};
+ \end{axis}
+
+\end{tikzpicture}
+\end{document}

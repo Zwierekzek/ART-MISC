@@ -1,0 +1,61 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes}
+\usepackage{amsmath,amssymb,amsfonts}
+
+\usepackage{pgfplots}
+\definecolor{darkgreen}{rgb}{0.0, 0.42, 0.24}
+\definecolor{amethyst}{rgb}{0.6, 0.4, 0.8}
+
+\usetikzlibrary{calc}
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{fillbetween}
+
+\newcommand{\anglearc}[6]{%
+    \begin{scope}
+      \coordinate (AngleArcA) at (axis cs:#1);
+      \coordinate (AngleArcB) at (axis cs:#2);
+      \coordinate (AngleArcC) at (axis cs:#3);
+      \path [clip] (AngleArcA) -- (AngleArcB) -- (AngleArcC) -- cycle;
+      \node (AngleArcCircle) [#5,circle,minimum size=#4] at (axis cs:#2) {};
+    \end{scope}
+      \coordinate (AngleArcA1) at (intersection of AngleArcB--AngleArcA and AngleArcCircle);
+      \coordinate (AngleArcC1) at (intersection of AngleArcB--AngleArcC and AngleArcCircle);
+    
+%
+}
+
+\begin{document}
+\begin{tikzpicture}
+       \begin{axis}[axis lines=center,
+       xmin=-11,
+       xmax=11,
+       ymin=-11,
+       ymax=11,
+       axis equal,
+       xlabel=$x$,
+       ylabel=$y$,
+       yticklabels=false,
+       xticklabels=false]
+           
+           \draw[color=gray,dashed, rotate around={40:(axis cs:0,0)}] (axis cs: 0,0) ellipse (7.8 and 5);
+           \fill (axis cs: 6,5) circle (0.25);
+            \fill (axis cs: -6,-5) circle (0.25);
+           \node[scale=0.6] at (axis cs:7,5){$m_1$};
+           \node[scale=0.6] at (axis cs:-7,-5){$m_2$};
+           \draw[->,color=black](axis cs:0,0)--(axis cs:5.85,4.9);
+            \draw[->,color=black](axis cs:0,0)--(axis cs:-5.85,-4.9);
+            
+            \anglearc{6,5}{0,0}{5,0}{1.5cm}{draw}{$\omega t$}
+            \node[scale=0.6] at (axis cs:1.35,0.5){$\omega t$};
+            \node[scale=0.6] at (axis cs:2.9,3.5){$r_1$};
+             \node[scale=0.6] at (axis cs:-2.9,-3.5){$r_2$};
+            
+            \addplot[color=gray,dashed,samples=3] coordinates {(6,0)(6,5)};
+            \node[scale=0.6] at (axis cs:7.5,2.5){$r_1\cos{\omega t}$};
+            \addplot[color=gray,dashed,samples=3] coordinates {(6,5)(0,5)};
+            \node[scale=0.6] at (axis cs:3,5.5){$r_1\sin{\omega t}$};
+       \end{axis}
+    \end{tikzpicture}
+\end{document}

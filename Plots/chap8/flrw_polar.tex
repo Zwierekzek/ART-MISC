@@ -1,0 +1,31 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes}
+\usepackage{amsmath,amssymb,amsfonts}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+
+\pgfplotsset{compat=newest}
+\pgfplotsset{every axis/.append style={
+                     tick label style={font=\footnotesize},
+                 }}
+
+
+\begin{document}
+\begin{tikzpicture}
+ \begin{polaraxis}[
+  ylabel=$\chi$,
+  xticklabels=false,
+  ymin=0,
+  ymax=1,
+  yticklabels=false
+ ]
+ \addplot[domain=0:360,samples=300, color=gray,dashed,fill=red!30,opacity=0.6] {0.5};
+ \draw[->](axis cs: 0,0)--(axis cs: 225,0.5) node[above,midway,scale=0.6]{$r$};
+ 
+ \end{polaraxis}
+
+\end{tikzpicture}
+\end{document}

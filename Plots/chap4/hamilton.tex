@@ -1,0 +1,32 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes}
+\usepackage{amsmath,amssymb,amsfonts}
+
+\usepackage{pgfplots}
+\usepackage[makeroom]{cancel}
+\usetikzlibrary{decorations.markings}
+\definecolor{darkgreen}{rgb}{0.0, 0.42, 0.24}
+\definecolor{amethyst}{rgb}{0.6, 0.4, 0.8}
+
+\pgfplotsset{compat=newest}
+\pgfplotsset{every axis/.append style={
+                     tick label style={font=\footnotesize},
+                 }}
+
+\begin{document}
+\begin{tikzpicture}
+    \draw[->](0,0)--+(5,0) node[below]{$x$};
+    \draw[->](0,0)--+(0,5) node[left]{$y$};
+
+    \fill (1,1) circle (1pt) node[left,scale=0.5]{$A$};
+    \fill (4,4) circle (1pt) node[right,scale=0.5]{$B$};
+
+    \draw [red] plot [smooth, tension=0.6] coordinates { (1,1) (4,4)} node[below,scale=0.7,yshift=-55pt,xshift=-50pt]{$\Gamma_0$};
+
+    \draw [orange] plot [smooth, tension=0.6] coordinates { (1,1) (2,3) (4,4)} node[below,scale=0.7,yshift=-24pt,xshift=-50pt]{$\Gamma_1$};
+
+    \draw [orange] plot [smooth, tension=0.6] coordinates { (1,1) (2,1) (3,2) (4,4)} node[below,scale=0.7,yshift=-100pt,xshift=-50pt]{$\Gamma_2$};
+\end{tikzpicture}
+\end{document}

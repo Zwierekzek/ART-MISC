@@ -1,0 +1,36 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{pgfplots}
+\definecolor{darkgreen}{rgb}{0.0, 0.42, 0.24}
+\definecolor{amethyst}{rgb}{0.6, 0.4, 0.8}
+
+\pgfplotsset{width=10cm,compat=1.9}
+\pgfplotsset{every axis/.append style={
+                     tick label style={font=\footnotesize},
+                 }}
+
+
+\begin{document}
+\begin{tikzpicture}
+        \begin{axis}[xmin=0,xmax=5,ymin=-1.5,ymax=5,
+        xtick={1},
+        ytick={-1},
+        xticklabels={$r_{0}$},
+        yticklabels={$E_{min}$},
+        axis lines = middle,
+        xlabel=$x$,
+        ylabel=$V_{eff}$,
+        label style={font=\tiny},
+        tick label style={font=\tiny},
+        xticklabel style={anchor=south},
+        domain=0:5]
+            \addplot[color=red,samples=100]{-2/x+1/x^2};
+            
+           \addplot[color=gray,dashed,samples=10] coordinates {(1,-1)(1,0)};
+           \addplot[color=gray,dashed,samples=10] coordinates {(0,-1)(5,-1)};
+        \end{axis}
+    \end{tikzpicture}
+\end{document}
